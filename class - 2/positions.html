@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+
+    <style>
+        body {
+            border: 3px solid red
+        }
+
+        .item {
+            height: 30px;
+            border: 1px solid black;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .static {
+            background-color: brown;
+            top: 10px;
+            left: 10px;
+            bottom: 10px;
+            right: 10px;
+
+            position: static;
+        }
+
+        .relative {
+            background-color: green;
+            top: 30px;
+            left: 10px;
+            bottom: 10px;
+            right: 10px;
+            /* position: relative; */
+            /* z-index: -1; */
+        }
+
+        .parent1 {
+            border: 1px solid red;
+            height: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            position: relative
+        }
+
+        .parent2 {
+            border: 1px solid green;
+            height: 10px;
+            margin-bottom: 20px;
+            /* position: relative */
+        }
+
+        .absolute {
+            background-color: blue;
+            /* top: 20px; */
+            position: absolute;
+            width: 200px;
+        }
+
+        .fixed {
+            background-color: yellow;
+            position: fixed;
+            right: 0;
+            z-index: 1;
+        }
+
+        .sticky {
+            background-color: orange;
+            position: sticky;
+            top: 50px;
+        }
+
+        .scroll {
+            height: 200vh;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="item static">Static</div>
+    <div class="item relative">Relative</div>
+    <div class="parent1">
+        <div class="parent2">
+            <div class="item absolute">Absolute</div>
+        </div>
+    </div>
+    <div class="item fixed">Fixed</div>
+    <div class="item sticky">Sticky</div>
+
+    <div class="scroll"></div>
+
+</body>
+
+</html>

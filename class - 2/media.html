@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries</title>
+    <style>
+        h1 {
+            height: 30px;
+            border: 1px dotted black;
+            background-color: red;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* @media (condition){} */
+
+        /**
+         * breakpoints
+         * xs -> 0 - 546
+         * s -> 546 - 768
+         * m -> 768 - 992
+         * l -> 992 - 1200
+         * xl -> >1200
+         */
+
+        @media (max-width: 546px) {
+
+            h1 {
+                background-color: blue;
+            }
+        }
+
+        @media (min-width: 546px) and (max-width: 768px) {
+
+            h1 {
+                background-color: green;
+            }
+        }
+
+        @media (min-width: 768px) and (max-width: 992px) {
+
+            h1 {
+                background-color: pink;
+            }
+        }
+
+        @media (min-width: 992px) and (max-width: 1200px) {
+
+            h1 {
+                background-color: brown;
+            }
+        }
+
+        @media (min-width: 1200px) {
+
+            h1 {
+                background-color: orange;
+            }
+        }
+
+        @media print {
+            h1 {
+                color: red
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Vijay</h1>
+
+</body>
+
+</html>
