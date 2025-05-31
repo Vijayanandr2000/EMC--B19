@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <style>
+        li {
+            /* color: red */
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <h2>Todo App...!</h2>
+        <input type="text" placeholder="Enter your task here" id="input" />
+        <button id="btn" class="btn" onclick="addEvent()">Add</button>
+    </section>
+
+    <section>
+        <ol>
+            <!-- <li>Task - 1 <button>Delete</button></li> -->
+            <!-- <li></li> -->
+        </ol>
+    </section>
+
+    <script>
+        const addBtn = document.getElementById("btn");
+        const input = document.getElementById("input");
+        const ol = document.querySelector("ol");
+        // let addBtn = document.getElementsByClassName("btn");
+        // let addBtn = document.getElementsByTagName("button");
+        // let addBtn = document.get("#");
+        // addBtn.addEventListener("click", function () {
+        //     const li = document.createElement("li")
+        //     li.innerText = input.value;
+
+        //     const delBtn = document.createElement("button")
+        //     delBtn.innerText = "Delete";
+
+        //     delBtn.addEventListener("click", function () {
+        //         li.remove()
+        //     })
+
+        //     // ol.prepend(li);
+        //     li.appendChild(delBtn);
+        //     ol.appendChild(li);
+        // })
+
+        function addEvent() {
+            if (input.value === "") {
+                alert("Please enter a task")
+                return
+            }
+
+
+            const li = document.createElement("li")
+            li.innerText = input.value;
+            li.style.color = "blue";
+
+            const delBtn = document.createElement("button")
+            delBtn.innerHTML = `<b>Delete</b>`;
+
+            delBtn.addEventListener("click", function () {
+                li.remove()
+            })
+
+            // ol.prepend(li);
+            li.appendChild(delBtn);
+            ol.appendChild(li);
+
+            input.value = ""
+        }
+    </script>
+</body>
+
+</html>

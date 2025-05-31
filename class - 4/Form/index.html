@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form + Table</title>
+
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+
+        table {
+            border-collapse: collapse;
+
+        }
+
+        th,
+        td {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="form">
+        <h1>User Form</h1>
+        <form>
+            <div>
+                <label for="name">Name: </label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="number" id="phone" name="phone">
+            </div>
+
+            <div>
+                <label for="address">Address:</label>
+                <textarea id="address" name="address"></textarea>
+            </div>
+
+            <div>
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob">
+            </div>
+
+            <div>
+                <label for="hobbies">Hobbies:</label>
+                <div>
+                    <input type="checkbox" id="reading" name="hobbies" value="Reading">
+                    <label for="reading">Reading</label>
+                    <input type="checkbox" id="travelling" value="Traveling" name="hobbies">
+                    <label for="travelling">Traveling</label>
+                    <input type="checkbox" id="gaming" value="Gaming" name="hobbies">
+                    <label for="gaming">Gaming</label>
+                </div>
+            </div>
+
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+
+            <div>
+                <label for="education">Education:</label>
+                <input type="radio" name="education" value="High School" id="hs"> <label for="hs">High School</label>
+                <input type="radio" name="education" value="Bachelor's" id="bachelor"> <label
+                    for="bachelor">Bachelor's</label>
+                <input type="radio" name="education" value="Master's" id="masters"> <label
+                    for="masters">Master's</label>
+            </div>
+
+            <input type="submit" value="Add">
+        </form>
+    </section>
+
+    <hr>
+
+    <section id="table">
+        <table border="1" id="userTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Password</th>
+                    <th>Hobbies</th>
+                    <th>Education</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <!-- [
+                []
+                []
+                []
+                ] -->
+                <!-- <tr>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Phone</td>
+                    <td>Address</td>
+                    <td>Gender</td>
+                    <td>DOB</td>
+                    <td>Hobbies</td>
+                    <td>Password</td>
+                    <td>Education</td>
+                </tr> -->
+            </tbody>
+        </table>
+    </section>
+
+
+    <script>
+        const form = document.querySelector("form");
+        const table = document.getElementById("userTable").getElementsByTagName("tbody")[0];
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the form from submitting
+            // const name = document.getElementById("name").value;
+            // const email = document.getElementById("email").value;
+            // const phone = document.getElementById("phone").value;
+            // const address = document.getElementById("address").value;
+            // const gender = document.getElementById("gender").value;
+            // const dob = document.getElementById("dob").value;
+            // const password = document.getElementById("password").value;
+
+            // const hobbies = document.querySelectorAll('input[name="hobbies"]:checked');
+
+
+            // const education = document.querySelector('input[name="education"]:checked').value;
+
+            // console.log(hobbies);
+
+            // let selectedHobbies = []
+
+            // for (let i = 0; i < hobbies.length; i++) {
+            //     let hobbyInput = hobbies[i]
+            //     selectedHobbies.push(hobbyInput.value);
+            // }
+
+            // selectedHobbies = selectedHobbies.join(", ")
+
+
+            // let userDetail = {
+            //     name, email, phone, address, gender, dob, password, selectedHobbies, education
+            // }
+
+            // console.log(userDetail);
+
+            const formData = new FormData(form)
+            // console.log(formData)
+
+            let userDetail = {
+                name: formData.get("name"),
+                email: formData.get("email"),
+                phone: formData.get("phone"),
+                address: formData.get("address"),
+                gender: formData.get("gender"),
+                dob: formData.get("dob"),
+                password: formData.get("password"),
+                hobbies: formData.getAll("hobbies").join(", "),
+                education: formData.get("education")
+            }
+            console.log(userDetail)
+
+            const row = table.insertRow()
+
+            row.innerHTML = `
+                <td>${userDetail.name}</td>
+                <td>${userDetail.email}</td>
+                <td>${userDetail.phone}</td>
+                <td>${userDetail.address}</td>
+                <td>${userDetail.gender}</td>
+                <td>${userDetail.dob}</td>
+                <td>${userDetail.password}</td>
+                <td>${userDetail.hobbies}</td>
+                <td>${userDetail.education}</td>
+                <td>
+                    <button class="deleteBtn" onclick="deleteRow(this)">Delete</button>
+                </td>
+            `
+
+            form.reset()
+
+        })
+
+        function deleteRow(btn) {
+            btn.parentNode.parentNode.remove();
+        }
+
+    </script>
+
+</body>
+
+</html>
