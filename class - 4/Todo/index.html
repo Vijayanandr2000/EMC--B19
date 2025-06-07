@@ -58,7 +58,33 @@
         //     ol.appendChild(li);
         // })
 
-        function addEvent() {
+        document.getElementById(btn).addEventListener("click", () => {
+            // addEvent()
+            if (input.value === "") {
+                alert("Please enter a task")
+                return
+            }
+
+
+            const li = document.createElement("li")
+            li.innerText = input.value;
+            li.style.color = "blue";
+
+            const delBtn = document.createElement("button")
+            delBtn.innerHTML = `<b>Delete</b>`;
+
+            delBtn.addEventListener("click", function () {
+                li.remove()
+            })
+
+            // ol.prepend(li);
+            li.appendChild(delBtn);
+            ol.appendChild(li);
+
+            input.value = ""
+        })
+
+        function addEvent1() {
             if (input.value === "") {
                 alert("Please enter a task")
                 return
